@@ -63,9 +63,11 @@ def edit(book_id):
         db.session.commit()
         return redirect("/")
 
+# https://gist.github.com/angelabauer/e2e5840de409681ef94ca95db0a4853c
 
-@app.route("/delete/<int:book_id>", methods=['GET'])
-def delete(book_id):
+@app.route("/delete")
+def delete():
+    book_id = request.args.get('id')
     book_to_delete = Book.query.get(book_id)
     db.session.delete(book_to_delete)
     db.session.commit()

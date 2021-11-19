@@ -11,7 +11,11 @@
             <p>Library is empty.</p>
         {% else %}
             {% for book in all_books %}
-        <li><a href="delete/{{ book['id'] }}"><b>Delete</b></a> {{book["title"]}} - {{book["author"]}} - {{book["rating"]}}/10    <a href="edit/{{ book['id'] }}"><b>Edit rating</b></a></li>
+        <li>
+            <a href="{{ url_for('delete', id=book.id) }}"><b>Delete</b></a>
+            {{book["title"]}} - {{book["author"]}} - {{book["rating"]}}/10
+            <a href="{{ url_for('delete', id=book.id) }}"><b>Edit rating</b></a>
+        </li>
              {% endfor %}
         {% endif %}
     </ul>
